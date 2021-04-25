@@ -11,10 +11,10 @@ spec:
       - image: traefik:v2.4
         name: traefik-ingress-lb
         ports:
-        - name: web
+        - name: http
           containerPort: 80
           hostPort: 80
-        - name: websecure
+        - name: https
           containerPort: 443
           hostPort: 443
         - name: admin
@@ -36,7 +36,7 @@ spec:
         # Define two entrypoint ports, and setup a redirect from HTTP to HTTPS.
         - --entryPoints.web.address=:80
         - --entryPoints.websecure.address=:443
-        - --entrypoints.websecure.http.tls.certResolver=default
+        - --entrypoints.web.http.redirections.entryPoint.to=websecure
         - --entrypoints.web.http.redirections.entryPoint.scheme=https
         # Enable debug logging. Useful to work out why something might not be
         # working. Fetch logs of the pod.
