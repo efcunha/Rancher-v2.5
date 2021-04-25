@@ -1,6 +1,6 @@
-# Traefik-v2.4
+# Traefik-v2.4.x
 
-# Traefik v2.4 HA K8s
+# Traefik v2.4.x HA K8s
 
 https://blog.tomarrell.com/post/traefik_v2_on_kubernetes
 
@@ -16,11 +16,11 @@ Kubernetes 1.20.5
 
 Rancher 2.5.7
 
-Traefik 2.4
+Traefik 2.4.x
 
 
 ```sh
-$ cd traefik-v2.42
+$ cd traefik-v2.4
 # Alterar o ingress, colocar o host do seu endereço
 # Alerar o email e o comentário de staging no deamon-set
 $ kubectl apply -k .
