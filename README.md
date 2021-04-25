@@ -1,6 +1,6 @@
 # Traefik-v2.4.x
 
-# Traefik v2.4.x HA K8s
+# Traefik v2.4.x HA Rancher K8s
 
 https://blog.tomarrell.com/post/traefik_v2_on_kubernetes
 
