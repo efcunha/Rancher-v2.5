@@ -227,6 +227,30 @@ $ kubectl get hpa
 $ kubectl get deployment php-apache
 ```
 
+### HELM
+
+
+```sh 
+$ curl -LO https://git.io/get_helm.sh
+$ chmod 700 get_helm.sh
+$ ./get_helm.sh
+$ helm init
+$ helm init --upgrade
+
+
+$ kubectl create serviceaccount --namespace kube-system tiller
+$ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+$ kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+
+$ helm search
+
+$ helm repo update
+
+$ helm install stable/redis
+```
+
+As aplicações no catálogo do Rancher são feitas pelo Helm.
+
 ## Agradecimentos:
 
 Este material é baseado no curso:
