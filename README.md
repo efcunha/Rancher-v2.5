@@ -2,12 +2,6 @@
 
 # Traefik v2.4.x HA Rancher K8s
 
-https://blog.tomarrell.com/post/traefik_v2_on_kubernetes
-
-https://traefik.io/blog/traefik-2-2-ingress/
-
-https://github.com/jonathanbaraldi/devops/tree/master/exercicios/traefik22
-
 Ubuntu 21.04 LTS
 
 Docker 20.10.6
@@ -31,6 +25,23 @@ $ kubectl apply -k .
 $ kubectl apply -f app-teste.yml
 
 ```
+
+## Agradecimentos:
+
+Este repositório é baseado no:
+
+https://blog.tomarrell.com/post/traefik_v2_on_kubernetes
+
+https://traefik.io/blog/traefik-2-2-ingress/
+
+E tambem no curso:
+
+https://github.com/jonathanbaraldi/devops/tree/master/exercicios/traefik22
+
+https://github.com/jonathanbaraldi
+
+Todo méritos a eles que fizeram e atualizaram este repositório. 
+
 # License
 
 Copyright (c) 2014-2018 [Rancher Labs, Inc.](http://rancher.com)
