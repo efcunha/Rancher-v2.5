@@ -1,5 +1,3 @@
-# Traefik-v2.4.x
-
 # Traefik v2.4.x HA Rancher K8s
 
 Ubuntu 21.04 LTS
