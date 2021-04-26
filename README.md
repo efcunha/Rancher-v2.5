@@ -108,7 +108,7 @@ $ kubectl get nodes
 O Traefik é a aplicação que iremos usar como ingress. Ele irá ficar escutando pelas entradas de DNS que o cluster deve responder. Ele possui um dashboard de  monitoramento e com um resumo de todas as entradas que estão no cluster.
 ```ssh
 git clone https://github.com/efcunha/Traefik-v2.4.git
-cd Traefik-v2.4
+cd Traefik-v2.4/
 
 - Alterar no arquivo daemon-set.yaml
   - Linha 45: Colocar seu e-mail
