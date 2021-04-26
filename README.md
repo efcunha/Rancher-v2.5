@@ -231,18 +231,14 @@ $ kubectl get deployment php-apache
 
 
 ```sh 
-$ curl -LO https://git.io/get_helm.sh
+$ curl -O https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
-$ helm init
-$ helm init --upgrade
+$ helm version
 
+$ helm repo add stable https://charts.helm.sh/stable
 
-$ kubectl create serviceaccount --namespace kube-system tiller
-$ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-$ kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
-
-$ helm search
+$ helm search hub redis
 
 $ helm repo update
 
