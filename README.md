@@ -121,6 +121,13 @@ $ kubectl apply -k .
 
 $ kubectl --namespace=kube-system get pods
 ```
+Este repositório é baseado no:
+
+https://blog.tomarrell.com/post/traefik_v2_on_kubernetes
+
+https://traefik.io/blog/traefik-2-2-ingress/
+
+
 ### Volumes
 
 Fazer o deployment do Longhorn.
@@ -222,15 +229,9 @@ $ kubectl get deployment php-apache
 
 ## Agradecimentos:
 
-Este repositório é baseado no:
+Este material é baseado no curso:
 
-https://blog.tomarrell.com/post/traefik_v2_on_kubernetes
-
-https://traefik.io/blog/traefik-2-2-ingress/
-
-E tambem no curso:
-
-https://github.com/jonathanbaraldi/devops/tree/master/exercicios/traefik22
+DevOps Ninja: Docker, Kubernetes e Rancher
 
 https://github.com/jonathanbaraldi
 
