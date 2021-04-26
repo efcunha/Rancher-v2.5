@@ -256,8 +256,19 @@ $ helm repo update
 
 $ helm install stable/redis
 ```
-
 As aplicações no catálogo do Rancher são feitas pelo Helm.
+
+# Limpeza de cluster
+
+Usar os repositórios abaixo:
+
+https://github.com/efcunha/etcd-cleanup.git
+
+https://github.com/efcunha/k8s-cleanup.git
+
+https://github.com/efcunha/Docker-cleanup.git
+
+Existe a possibilidade de fazer esta rotina em um só pacote de repositório, para otimizar as instalações, mais como o intuito é de aprendizado resolvi fazer pacotes separados para melhor visualização.
 
 ## Agradecimentos:
 
