@@ -107,7 +107,7 @@ $ vi ~/.kube/config
 $ kubectl get nodes
 ```
 
-### Traefik - DNS
+### Traefik 
 
 O Traefik é a aplicação que iremos usar como ingress. Ele irá ficar escutando pelas entradas de DNS que o cluster deve responder. Ele possui um dashboard de  monitoramento e com um resumo de todas as entradas que estão no cluster.
 ```ssh
