@@ -55,7 +55,7 @@ $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 ### Instalar Rancher - Single Node
 
-Nesse exercício iremos instalar o Rancher 2.2.5 versão single node. Isso significa que o Rancher e todos seus componentes estão em um container. 
+Nesse exercício iremos instalar o Rancher 2.5.7 versão single node. Isso significa que o Rancher e todos seus componentes estão em um container. 
 
 Entrar no host A, que será usado para hospedar o Rancher Server. Iremos verficar se não tem nenhum container rodando ou parado, e depois iremos instalar o Rancher.
 ```sh
