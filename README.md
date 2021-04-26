@@ -257,8 +257,6 @@ https://www.udemy.com/course/devops-mao-na-massa-docker-kubernetes-rancher
 
 https://github.com/jonathanbaraldi
 
-Todo méritos a eles que fizeram e atualizaram este repositório. 
-
 # License
 
 Copyright (c) 2014-2018 [Rancher Labs, Inc.](http://rancher.com)
