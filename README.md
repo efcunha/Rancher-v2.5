@@ -12,6 +12,8 @@ Traefik 2.4.x
 
 # Ambiente
 
+https://github.com/efcunha/Traefik-v2.4/blob/master/images/arquitetura.png
+
 # Prerequisitos
 	
 	Faremos a instalação do Docker, e também iremos revisar a arquitetura do ambiente.
