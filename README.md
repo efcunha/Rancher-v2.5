@@ -233,6 +233,8 @@ Este material é baseado no curso:
 
 DevOps Ninja: Docker, Kubernetes e Rancher
 
+https://www.udemy.com/course/devops-mao-na-massa-docker-kubernetes-rancher
+
 https://github.com/jonathanbaraldi
 
 Todo méritos a eles que fizeram e atualizaram este repositório. 
