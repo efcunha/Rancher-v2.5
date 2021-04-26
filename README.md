@@ -1,5 +1,5 @@
 
-# Rancher Traefik v2.4.x HA K8s
+# Rancher Traefik v2.4.x K8s
 
 Ubuntu 21.04 LTS
 
