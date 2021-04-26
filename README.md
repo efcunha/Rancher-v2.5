@@ -1,3 +1,4 @@
+
 # Traefik v2.4.x HA Rancher K8s
 
 Ubuntu 21.04 LTS
@@ -12,7 +13,7 @@ Traefik 2.4.x
 
 # Ambiente
 
-
+![arquitetura](https://user-images.githubusercontent.com/52961166/116088850-3fb05200-a670-11eb-8984-22dd6b6bfd68.png)
 
 
 # Prerequisitos
