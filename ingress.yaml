@@ -1,23 +1,17 @@
 ---
-apiVersion: networking.k8s.io/v1
 kind: Ingress
+apiVersion: extensions/v1beta1
 metadata:
   name: traefik-daemon-set
-  namespace: kube-system
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/router.tls.certresolver: default
 spec:
   rules:
-    - host: <traefik.xxx.xxx.br> # Coloque aqui o endereço de sua aplicação.
+    - host: traefik.tcemt.tc.br
       http:
         paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: traefik-daemon-set
-                port: 
-                  number: 80
+          - backend:
+              serviceName: traefik-daemon-set
+              servicePort: 80
