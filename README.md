@@ -158,7 +158,7 @@ O Graylog é a aplicação que iremos usar como agregador de logs do cluster. Os
 
 Para instalar o Graylog, iremos aplicar o template dele, que está em graylog.yml. Para isso, é preciso que sejam editados 2 pontos no arquivo.
 
-- Linha 239 - value: http://graylog.<dominino>/api
+- Linha 239 - value: https://graylog.<dominino>/api
 - Linha 312 - host: graylog.<dominio>
 
 Substituir o {user}, pelo nome do aluno. Após substituir, aplicar e entrar no Graylog para configurar.
