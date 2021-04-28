@@ -236,7 +236,7 @@ spec:
       containers:
       - env:
         - name: GRAYLOG_WEB_ENDPOINT_URI
-          value: http://graylog.<dominio>/api
+          value: https://graylog.<dominio>/api
         - name: GRAYLOG_ELASTICSEARCH_HOSTS
           value: "http://elasticsearch.graylog.svc.cluster.local:9200"
         - name: ELASTICSEARCH_DISCOVERY_ZEN_PING_MULTICAST_ENABLED
