@@ -1,8 +1,12 @@
+
+
 ---
 apiVersion: v1
 kind: Namespace
 metadata: 
   name: graylog
+
+
 
 ---
 apiVersion: v1
@@ -18,6 +22,7 @@ spec:
     requests:
       storage: 6Gi
 
+
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -32,6 +37,7 @@ spec:
     requests:
       storage: 6Gi
 
+
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -45,6 +51,11 @@ spec:
   resources:
     requests:
       storage: 6Gi
+
+
+
+
+
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -67,6 +78,7 @@ rules:
   - watch
   verbs:
   - get
+
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -128,6 +140,8 @@ spec:
           claimName: elasticsearch-pvc
 status: {}
 
+
+
 ---
 apiVersion: v1
 kind: Service
@@ -147,6 +161,10 @@ spec:
     service: elasticsearch
 status:
   loadBalancer: {}
+
+
+
+
 
 ---
 apiVersion: apps/v1
@@ -185,6 +203,8 @@ spec:
           claimName: mongodb-pvc
 status: {}
 
+
+
 ---
 apiVersion: v1
 kind: Service
@@ -205,6 +225,9 @@ spec:
 status:
   loadBalancer: {}
 
+
+
+
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -212,6 +235,9 @@ metadata:
   name: graylog
   #namespace: default
   namespace: graylog
+
+
+
 
 ---
 apiVersion: apps/v1
@@ -236,7 +262,7 @@ spec:
       containers:
       - env:
         - name: GRAYLOG_WEB_ENDPOINT_URI
-          value: https://graylog.<dominio>/api
+          value: http://graylog.<dominio>/api
         - name: GRAYLOG_ELASTICSEARCH_HOSTS
           value: "http://elasticsearch.graylog.svc.cluster.local:9200"
         - name: ELASTICSEARCH_DISCOVERY_ZEN_PING_MULTICAST_ENABLED
@@ -260,12 +286,12 @@ spec:
         - name: graylog-volume
           mountPath: /opt/graylog/data
 
-        #/opt/graylog/data \
-        #/opt/graylog/data/journal \
-        #/opt/graylog/data/log \
-        #/opt/graylog/data/config \
-        #/opt/graylog/data/plugin \
-        #/opt/graylog/data/data
+    #/opt/graylog/data \
+    #/opt/graylog/data/journal \
+    #/opt/graylog/data/log \
+    #/opt/graylog/data/config \
+    #/opt/graylog/data/plugin \
+    #/opt/graylog/data/data
 
       restartPolicy: Always
 
@@ -275,6 +301,8 @@ spec:
           claimName: graylog-pvc
 
 status: {}
+
+
 
 ---
 apiVersion: v1
@@ -299,6 +327,7 @@ spec:
   selector:
     service: graylog
 
+
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -309,13 +338,14 @@ metadata:
     allow.http: "false"
 spec:
   rules:
-  - host: graylog.<dominio>
+  - host: graylog.graylog.<dominio>
     http:
       paths:
         - path: /
           backend:
             serviceName: graylog
             servicePort: 9000
+
 
 ---
 apiVersion: v1
@@ -341,6 +371,7 @@ rules:
   - list
   - watch
 
+
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -355,6 +386,8 @@ subjects:
 - kind: ServiceAccount
   name: fluentd
   namespace: kube-system
+
+
 
 ---
 apiVersion: apps/v1
@@ -387,6 +420,8 @@ spec:
         imagePullPolicy: Always 
         env:
           - name:  GELF_HOST 
+            #value: "graylog.prod.rancher.tcu.gov.br"
+            # value: "10.1.7.65"
             value: "graylog.graylog.svc.cluster.local"
           - name:  GELF_PORT
             value: "12201"
@@ -413,3 +448,4 @@ spec:
         hostPath:
           # path: /var/log/containers/
           path: /var/lib/docker/
+
