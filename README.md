@@ -122,6 +122,7 @@ git clone https://github.com/efcunha/Traefik-v2.4.git
 cd Traefik-v2.4/
 
 - Alterar no arquivo daemon-set.yaml
+
   - Linha 45: Colocar seu e-mail
 
   - Habilitar a linha abaixo no arquivo daemon-set.yaml somente quando for gerar certificado para produção.
@@ -129,8 +130,11 @@ cd Traefik-v2.4/
    "- --certificatesresolvers.default.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
 
 - Alterar no arquivo ingress.yaml
-  - Linha 13: Colocar o endereço e dominio para o Traefik
+
+  - Linha 12: Colocar o endereço e dominio para o Traefik
+
 - Alterar no arquivo app-teste.yaml  
+  
   - Linha 55: Colocar o endereço e dominio para o App-teste
 
 $ kubectl apply -k .
