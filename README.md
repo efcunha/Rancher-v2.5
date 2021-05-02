@@ -1,5 +1,5 @@
 
-# Rancher Traefik v2.2.x K8s - Single Node
+# Rancher Traefik v2.2.x Kubernetes K8s - Single Node
 
 Ubuntu 21.04 LTS
 
