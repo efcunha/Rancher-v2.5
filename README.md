@@ -66,7 +66,7 @@ Entrar no host A, que será usado para hospedar o Rancher Server. Iremos verfica
 
 ```sh
 $ docker ps -a
-$ docker run -d --name rancher --restart=unless-stopped -v /opt/rancher:/var/lib/rancher  -p 80:80 -p 443:443 --privileged rancher/rancher:v2.2.8
+$ docker run -d --name rancher --restart=unless-stopped -v /opt/rancher:/var/lib/rancher  -p 80:80 -p 443:443 --privileged rancher/rancher:stable
 ```
 
 Com o Rancher já rodando, irei adicionar a entrada de cada DNS para o IP de cada máquina.
