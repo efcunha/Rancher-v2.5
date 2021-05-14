@@ -1,15 +1,30 @@
+---
 kind: DaemonSet
 apiVersion: apps/v1
 metadata:
   name: traefik-daemon-set
+  namespace: kube-system
+  labels:
+    app: traefik-daemon-set
+
 spec:
+  selector:
+    matchLabels:
+      app: traefik
   template:
+    metadata:
+      labels:
+        app: traefik
     spec:
       serviceAccountName: traefik-ingress-controller
       terminationGracePeriodSeconds: 60
+      securityContext:
+        # Use nogroup (and needs nobody) for the acme.json file
+        # for storing TLS
+        fsGroup: 65534
       containers:
       - image: traefik:v2.4
-        name: traefik-ingress-lb
+        name: traefik
         ports:
         - name: http
           containerPort: 80
@@ -21,28 +36,45 @@ spec:
           containerPort: 8080
           hostPort: 8080
         securityContext:
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          # Run the container as nobody:nogroup
+          runAsUser: 65534
+          runAsGroup: 65534
           capabilities:
             drop:
             - ALL
             add:
             - NET_BIND_SERVICE
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /ping
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 3              
         args:
         # Enable the dashboard without requiring a password. Not recommended
         # for production.
         - --api.insecure
-        - --api.dashboard
+        - --api.dashboard=true
+        - --ping=true
         # Specify that we want to use Traefik as an Ingress Controller.
+        - --providers.kubernetescrd
         - --providers.kubernetesingress
         # Define two entrypoint ports, and setup a redirect from HTTP to HTTPS.
+        - --entrypoints.traefik.address=:8080
         - --entryPoints.web.address=:80
         - --entryPoints.websecure.address=:443
         - --entrypoints.web.http.redirections.entryPoint.to=websecure
         - --entrypoints.web.http.redirections.entryPoint.scheme=https
         # Enable debug logging. Useful to work out why something might not be
         # working. Fetch logs of the pod.
-        - --log.level=info
         # Let's Encrypt Configurtion.
-        - --certificatesresolvers.default.acme.email=<Coloque seu e-mail aqui>
+        - --certificatesresolvers.default.acme.email=efcunha@tce.mt.gov.br
+        - --certificatesresolvers.default.acme.storage=/etc/traefik/certs/acme.json          
         - --certificatesresolvers.default.acme.storage=acme.json
         - --certificatesresolvers.default.acme.tlschallenge
         # Use the staging ACME server. Uncomment this while testing to prevent
@@ -52,5 +84,6 @@ spec:
         - --accesslog=true
         - --log=true
         - --metrics=true
+        - --log.level=INFO
         - --metrics.prometheus=true
         #- --metrics.prometheus.entryPoint="web-secure"       
