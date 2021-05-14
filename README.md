@@ -29,15 +29,9 @@ k8s-1         - HOST B
 k8s-2         - HOST C
 k8s-3         - HOST D
 
-$ sudo apt update
-$ sudo apt install apt-transport-https ca-certificates curl software-properties-common
-$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
-$ sudo apt update
-$ apt-cache policy docker-ce
-$ sudo apt install docker-ce
-$ sudo systemctl status docker
-$ sudo usermod -aG docker ubuntu
+$ sudo su
+$ curl https://releases.rancher.com/install-docker/20.10.sh | sh
+$ usermod -aG docker ubuntu
 ```
 # Instalar rodar docker-compose
 
@@ -66,7 +60,7 @@ Entrar no host A, que será usado para hospedar o Rancher Server. Iremos verfica
 
 ```sh
 $ docker ps -a
-$ docker run -d --name rancher --restart=unless-stopped -v /opt/rancher:/var/lib/rancher  -p 80:80 -p 443:443 --privileged rancher/rancher:v2.2.8
+$ docker run -d --name rancher --restart=unless-stopped -v /opt/rancher:/var/lib/rancher  -p 80:80 -p 443:443 --privileged rancher/rancher:stable
 ```
 
 Com o Rancher já rodando, irei adicionar a entrada de cada DNS para o IP de cada máquina.
