@@ -9,7 +9,7 @@ Kubernetes 1.20.5
 
 Rancher 2.5.7
 
-Traefik 2.2.x
+Traefik 2.4.x
 
 # Ambiente
 
