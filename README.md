@@ -171,12 +171,6 @@ Será preciso altear os DNS das aplicações para que elas fiquem acessíveis.
 
 Após o deploymnet, entrar no Grafana e Prometheus e mostrar seu funcionamento.
 
-
-### Liveness
-
-
-### Autoscaling
-
 ## Agradecimentos:
 
 Este material é baseado no curso:
