@@ -130,8 +130,11 @@ cd Traefik-v2.2/
 - Alterar no arquivo app-teste.yaml  
   
   - Linha 55: Colocar o endereço e dominio para o App-teste
-
+```
+```ssh
 $ kubectl apply -k .
+
+$ kubectl apply -f daemon-set.yaml
 
 $ kubectl --namespace=kube-system get pods
 ```
