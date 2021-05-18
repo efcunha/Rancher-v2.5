@@ -5,9 +5,9 @@ Ubuntu 21.04 LTS
 
 Docker 20.10.6
 
-Kubernetes 1.20.5
+Kubernetes 1.21.1
 
-Rancher 2.5.7
+Rancher 2.5.x
 
 Traefik 2.4.x
 
