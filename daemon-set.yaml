@@ -18,10 +18,6 @@ spec:
     spec:
       serviceAccountName: traefik-ingress-controller
       terminationGracePeriodSeconds: 60
-      securityContext:
-        # Use nogroup (and needs nobody) for the acme.json file
-        # for storing TLS
-        fsGroup: 65534
       containers:
       - image: traefik:v2.4
         name: traefik
@@ -36,11 +32,6 @@ spec:
           containerPort: 8080
           hostPort: 8080
         securityContext:
-          readOnlyRootFilesystem: true
-          runAsNonRoot: true
-          # Run the container as nobody:nogroup
-          runAsUser: 65534
-          runAsGroup: 65534
           capabilities:
             drop:
             - ALL
@@ -61,22 +52,24 @@ spec:
         - --api.insecure
         - --api.dashboard=true
         - --ping=true
+
         # Specify that we want to use Traefik as an Ingress Controller.
-        - --providers.kubernetescrd
         - --providers.kubernetesingress
+
         # Define two entrypoint ports, and setup a redirect from HTTP to HTTPS.
-        - --entrypoints.traefik.address=:8080
+        #- --entrypoints.traefik.address=:8080
         - --entryPoints.web.address=:80
         - --entryPoints.websecure.address=:443
-        - --entrypoints.web.http.redirections.entryPoint.to=websecure
-        - --entrypoints.web.http.redirections.entryPoint.scheme=https
+        #- --entrypoints.web.http.redirections.entryPoint.to=websecure
+        #- --entrypoints.web.http.redirections.entryPoint.scheme=https
+
         # Enable debug logging. Useful to work out why something might not be
         # working. Fetch logs of the pod.
         # Let's Encrypt Configurtion.
         - --certificatesresolvers.default.acme.email=efcunha@tce.mt.gov.br
-        - --certificatesresolvers.default.acme.storage=/etc/traefik/certs/acme.json          
         - --certificatesresolvers.default.acme.storage=acme.json
         - --certificatesresolvers.default.acme.tlschallenge
+
         # Use the staging ACME server. Uncomment this while testing to prevent
         # hitting rate limits in production.
         # Habilitar a linha abaixo somente quando for gerar certificado para produção.

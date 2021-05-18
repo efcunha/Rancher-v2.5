@@ -9,7 +9,6 @@ resources:
 - service-account.yaml
 - service.yaml
 - ingress.yaml
-- tls-options.yaml
 
 namespace: kube-system
 
