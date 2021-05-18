@@ -117,7 +117,7 @@ cd Traefik-v2.2/
 
 - Alterar no arquivo daemon-set.yaml
 
-  - Linha 45: Colocar seu e-mail
+  - Linha 69: Colocar seu e-mail
 
   - Habilitar a linha abaixo no arquivo daemon-set.yaml somente quando for gerar certificado para produção.
 
