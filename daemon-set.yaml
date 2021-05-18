@@ -66,7 +66,7 @@ spec:
         # Enable debug logging. Useful to work out why something might not be
         # working. Fetch logs of the pod.
         # Let's Encrypt Configurtion.
-        - --certificatesresolvers.default.acme.email=efcunha@tce.mt.gov.br
+        - --certificatesresolvers.default.acme.email=<Seu E-mail>
         - --certificatesresolvers.default.acme.storage=acme.json
         - --certificatesresolvers.default.acme.tlschallenge
 
