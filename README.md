@@ -149,31 +149,6 @@ https://traefik.io/blog/traefik-2-2-ingress/
 
 Fazer o deployment do Longhorn.
 
-### Graylog - LOG
-
-O Graylog é a aplicação que iremos usar como agregador de logs do cluster. Os logs dos containers podem ser vistos pelo Rancher, é um dos níveis de visualização. Pelo Graylog temos outros funcionalidades, e também é possível salvar para posterior pesquisa, e muitas outras funcionalidades.
-
-Para instalar o Graylog, iremos aplicar o template dele, que está em graylog.yml. Para isso, é preciso que sejam editados 2 pontos no arquivo.
-
-- Linha 265 - value: http://graylog.<dominino>/api
-- Linha 341 - host: graylog.<dominio>
-
-Substituir o {user}, pelo nome do aluno. Após substituir, aplicar e entrar no Graylog para configurar.
-
-```sh
-$ kubectl apply -f graylog.yml
-```
-Seguir os passos do instrutor para configuração do Graylog.
-
-### Grafana - MONITORAMENTO
-
-O Grafana/Prometheus é a stack que iremos usar para monitoramento. O Deployment dela será feito pelo Catálogo de Apps.
-Iremos configurar seguindo as informações do instrutor, e fazer o deployment.
-
-Será preciso altear os DNS das aplicações para que elas fiquem acessíveis.
-
-Após o deploymnet, entrar no Grafana e Prometheus e mostrar seu funcionamento.
-
 ## Agradecimentos:
 
 Este material é baseado no curso:
