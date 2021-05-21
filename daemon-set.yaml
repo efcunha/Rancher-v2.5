@@ -74,9 +74,10 @@ spec:
         # hitting rate limits in production.
         # Habilitar a linha abaixo somente quando for gerar certificado para produção.
         #- --certificatesresolvers.default.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
+        #- --certificatesresolvers.default.acme.caserver=https://acme-v02.api.letsencrypt.org/directory
         - --accesslog=true
         - --log=true
         - --metrics=true
         - --log.level=INFO
         - --metrics.prometheus=true
-        #- --metrics.prometheus.entryPoint="web-secure"       
+        #- --metrics.prometheus.entryPoint="web-secure"
