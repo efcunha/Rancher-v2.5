@@ -28,10 +28,15 @@ RancherSerber - HOST A
 k8s-1         - HOST B
 k8s-2         - HOST C
 k8s-3         - HOST D
-
-$ sudo su
-$ curl https://releases.rancher.com/install-docker/20.10.sh | sh
-$ usermod -aG docker ubuntu
+```
+```
+sudo su
+```
+```
+curl https://releases.rancher.com/install-docker/20.10.sh | sh
+```
+```
+usermod -aG docker ubuntu
 ```
 # Instalar rodar docker-compose
 
@@ -43,13 +48,20 @@ Sempre que aparecer <dockerhub-user>, você precisa substituir pelo seu usuário
 
 Entrar no host A, e instalar os pacotes abaixo, que incluem Git, Python, Pip e o Docker-compose.
 
-```sh
-
-$ sudo su
-$ apt-get install git -y
-$ curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-$ chmod +x /usr/local/bin/docker-compose
-$ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
+sudo su
+```
+```
+apt-get install git -y
+```
+```
+curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+```
+chmod +x /usr/local/bin/docker-compose
+```
+```	
+ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
 ### Instalar Rancher - Single Node
