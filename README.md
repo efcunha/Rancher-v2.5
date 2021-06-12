@@ -71,14 +71,16 @@ Nesse exercício iremos instalar o Rancher 2.5.7 versão single node. Isso signi
 Entrar no host A, que será usado para hospedar o Rancher Server. Iremos verficar se não tem nenhum container rodando ou parado, e depois iremos instalar o Rancher.
 
 ```sh
-$ docker ps -a
-$ docker run -d --name rancher --restart=unless-stopped -v /opt/rancher:/var/lib/rancher  -p 80:80 -p 443:443 --privileged rancher/rancher:stable
+docker ps -a
+```
+```	
+docker run -d --name rancher --restart=unless-stopped -v /opt/rancher:/var/lib/rancher  -p 80:80 -p 443:443 --privileged rancher/rancher:stable
 ```
 
 Com o Rancher já rodando, irei adicionar a entrada de cada DNS para o IP de cada máquina.
 
 ```sh
-$ rancher.<dominio> = IP do host A
+rancher.<dominio> = IP do host A
 ```
 
 ### Criar cluster Kubernetes
@@ -93,7 +95,7 @@ Adicionar o host B e host C.
 Pegar o seu comando no seu rancher.
 
 ```sh
-$ docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:v2.2.8 --server https://XXXXX.XXX.XX.XX --token 8xf5r2ttrvvqcxdhwsbx9cvb7s9wgwdmgfbmzr4mt7smjbg4jgj292 --ca-checksum 61ac25d1c389b26c5c9acd98a1c167dbfb394c6c1c3019d855901704d8bae282 --node-name k8s-1 --etcd --controlplane --worker
+docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:v2.2.8 --server https://XXXXX.XXX.XX.XX --token 8xf5r2ttrvvqcxdhwsbx9cvb7s9wgwdmgfbmzr4mt7smjbg4jgj292 --ca-checksum 61ac25d1c389b26c5c9acd98a1c167dbfb394c6c1c3019d855901704d8bae282 --node-name k8s-1 --etcd --controlplane --worker
 ```
 
 Será um cluster com 3 nós.
@@ -105,18 +107,28 @@ Navegar pelo Rancher e ver os painéis e funcionalidades.
 Agora iremos instalar o kubectl, que é a CLI do kubernetes. Através do kubectl é que iremos interagir com o cluster.
 
 ```sh
-$ sudo apt-get update && sudo apt-get install -y apt-transport-https gnupg2
-$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-$ echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
-$ sudo apt-get update
-$ sudo apt-get install -y kubectl
+sudo apt-get update && sudo apt-get install -y apt-transport-https gnupg2
+```
+```
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+```
+```	
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+```
+```	
+sudo apt-get update
+```
+```
+sudo apt-get install -y kubectl
 ```
 
 Com o kubectl instalado, pegar as credenciais de acesso no Rancher e configurar o kubectl.
 
 ```sh
-$ vi ~/.kube/config
-$ kubectl get nodes
+vi ~/.kube/config
+```
+```
+kubectl get nodes
 ```
 
 ### Traefik 
@@ -125,8 +137,11 @@ O Traefik é a aplicação que iremos usar como ingress. Ele irá ficar escutand
 
 ```ssh
 git clone https://github.com/efcunha/Traefik-v2.2.git
+```
+```	
 cd Traefik-v2.2/
-
+```
+```	
 - Alterar no arquivo daemon-set.yaml
 
   - Linha 69: Colocar seu e-mail
@@ -144,11 +159,13 @@ cd Traefik-v2.2/
   - Linha 55: Colocar o endereço e dominio para o App-teste
 ```
 ```ssh
-$ kubectl apply -k .
-
-$ kubectl apply -f daemon-set.yaml
-
-$ kubectl --namespace=kube-system get pods
+kubectl apply -k .
+```
+```	
+kubectl apply -f daemon-set.yaml
+```
+```	
+kubectl --namespace=kube-system get pods
 ```
 Este repositório é baseado no:
 
